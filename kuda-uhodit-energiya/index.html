@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#130d17">
+  <meta name="description" content="Тест по чакрам: узнайте, куда уходит ваша энергия и есть ли признаки какого-либо воздействия.">
+  <title>Куда уходит твоя энергия? — Лилия Маслова</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #100b14;
+      --bg-2: #1a1020;
+      --card: rgba(28, 18, 34, .84);
+      --milk: #f6f0e7;
+      --muted: #c8bbc8;
+      --gold: #d6b36c;
+      --gold-2: #f1d99e;
+      --line: rgba(226, 194, 128, .22);
+      --shadow: 0 28px 90px rgba(0,0,0,.45);
+      --accent: #d6b36c;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--milk);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(122, 67, 139, .23), transparent 42%),
+        radial-gradient(circle at 0 70%, rgba(79, 31, 88, .18), transparent 38%),
+        linear-gradient(155deg, var(--bg-2), var(--bg) 62%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    .shell { width: min(100%, 760px); margin: 0 auto; padding: max(18px, env(safe-area-inset-top)) 18px max(36px, env(safe-area-inset-bottom)); }
+    .brand { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .brand-name { color: var(--gold-2); font-family: Georgia, "Times New Roman", serif; font-size: .94rem; letter-spacing: .13em; text-transform: uppercase; }
+    .brand-role { color: #a99aa9; font-size: .72rem; text-align: right; }
+    .screen { display: none; animation: reveal .45s ease both; }
+    .screen.active { display: block; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(24px, 6vw, 48px);
+      background: linear-gradient(145deg, rgba(36,22,42,.91), rgba(20,13,25,.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .card::after { content: ""; position: absolute; width: 230px; height: 230px; border: 1px solid rgba(235,205,143,.10); border-radius: 50%; top: -145px; right: -95px; box-shadow: 0 0 60px rgba(220,183,108,.07); pointer-events: none; }
+    .eyebrow { margin: 0 0 16px; color: var(--gold); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    h1 { margin: 0; font-size: clamp(2.55rem, 10vw, 5.2rem); line-height: .98; letter-spacing: -.04em; }
+    h2 { margin: 0; font-size: clamp(2rem, 7vw, 3.7rem); line-height: 1.06; letter-spacing: -.025em; }
+    h3 { margin: 0; font-size: 1.55rem; line-height: 1.2; }
+    .gold { color: var(--gold-2); }
+    .lead { margin: 22px 0 0; color: #e3d8e2; font-size: clamp(1.04rem, 3vw, 1.2rem); line-height: 1.62; }
+    .impact-hook { margin: 18px 0 0; color: var(--gold-2); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.4; }
+    .quote { margin: 24px 0 0; padding: 18px 0 0 20px; border-left: 1px solid var(--gold); color: var(--muted); line-height: 1.62; }
+    .primary, .secondary {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 15px 24px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .82rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .primary { border: 1px solid #eed492; background: linear-gradient(135deg, #f1d99e, #b9904b); color: #211522; box-shadow: 0 12px 35px rgba(204,162,83,.22); }
+    .secondary { border: 1px solid rgba(236,209,150,.42); background: rgba(255,255,255,.035); color: var(--milk); }
+    .primary:hover, .secondary:hover { transform: translateY(-2px); }
+    .actions { display: grid; gap: 12px; margin-top: 30px; }
+    .chakra-orbit { position: relative; display: flex; justify-content: center; gap: 8px; padding: 32px 0 8px; }
+    .chakra-orbit span { width: 13px; height: 13px; border-radius: 50%; background: var(--c); box-shadow: 0 0 18px var(--c); opacity: .88; animation: breathe 3.2s ease-in-out infinite; animation-delay: calc(var(--i) * .15s); }
+    @keyframes breathe { 50% { transform: scale(.72); opacity: .48; } }
+    .fine { color: #9f919f; font-size: .76rem; line-height: 1.55; }
+    .intro-note { margin-top: 24px; }
+    .progress-wrap { margin: 6px 0 18px; }
+    .progress-top { display: flex; justify-content: space-between; color: #b8aab8; font-size: .8rem; margin-bottom: 9px; }
+    .progress { height: 3px; background: rgba(255,255,255,.09); border-radius: 10px; overflow: hidden; }
+    .progress > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--gold-2)); box-shadow: 0 0 14px var(--accent); transition: width .35s ease; }
+    .question-card { min-height: 480px; display: flex; flex-direction: column; }
+    .chakra-head { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+    .chakra-dot { flex: 0 0 auto; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 20px var(--accent); }
+    .chakra-name { color: var(--gold-2); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+    .chakra-theme { color: #9f919f; font-size: .76rem; margin-top: 3px; }
+    .question { margin: auto 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.55rem, 5.5vw, 2.5rem); line-height: 1.3; }
+    .answer-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 34px; }
+    .answer { min-height: 62px; border-radius: 16px; border: 1px solid rgba(235,210,161,.26); background: rgba(255,255,255,.035); cursor: pointer; text-transform: uppercase; letter-spacing: .13em; font-weight: 750; transition: .2s ease; }
+    .answer:hover, .answer:focus-visible { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); outline: none; }
+    .back { margin-top: 18px; border: 0; padding: 8px 0; background: transparent; color: #9d8f9c; cursor: pointer; }
+    .back[disabled] { opacity: 0; pointer-events: none; }
+    .transition-copy { color: var(--muted); line-height: 1.65; margin: 22px 0 0; }
+    .result-stack { display: grid; gap: 16px; }
+    .result-hero { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+    .result-chakra { display: flex; align-items: center; gap: 18px; margin: 23px 0; }
+    .result-number { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: #1e1420; font-family: Georgia, serif; font-size: 1.7rem; box-shadow: 0 0 34px color-mix(in srgb, var(--accent) 55%, transparent); }
+    .result-title { font-family: Georgia, serif; font-size: 1.75rem; }
+    .result-sub { color: #aa9caa; margin-top: 3px; }
+    .price { display: block; margin-top: 10px; color: var(--gold-2); font-size: 1.16em; white-space: nowrap; }
+    .result-copy { color: #d6cad5; line-height: 1.68; }
+    .bullet-list { margin: 18px 0 0; padding-left: 20px; color: #d6cad5; line-height: 1.65; }
+    .related { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip { padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: #ddd2dc; font-size: .83rem; }
+    .impact { border-color: rgba(225,178,104,.52); background: linear-gradient(145deg, rgba(68,39,39,.68), rgba(24,14,28,.95)); }
+    .impact.safe { border-color: rgba(124,177,138,.33); background: linear-gradient(145deg, rgba(28,55,42,.48), rgba(24,14,28,.95)); }
+    .telegram-template { margin: 20px 0 0; padding: 18px; border: 1px solid rgba(255,255,255,.1); border-radius: 16px; background: rgba(255,255,255,.03); color: #cfc2ce; white-space: pre-line; line-height: 1.55; font-size: .9rem; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; padding: 12px 18px; border-radius: 999px; background: #f0d89e; color: #211521; font-weight: 700; box-shadow: var(--shadow); transition: .25s ease; z-index: 20; }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    footer { padding: 22px 8px 0; text-align: center; color: #807480; font-size: .74rem; line-height: 1.5; }
+    @media (min-width: 620px) { .actions.two { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .shell { padding-inline: 12px; } .card { border-radius: 22px; padding: 24px 20px; } .brand-role { display: none; } .question-card { min-height: 450px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <div class="brand-name">Лилия Маслова</div>
+      <div class="brand-role">Проводник энергий и смыслов</div>
+    </header>
+
+    <section id="start" class="screen active">
+      <div class="card">
+        <p class="eyebrow">Тест по чакрам</p>
+        <h1>Куда уходит<br><span class="gold">твоя энергия?</span></h1>
+        <p class="impact-hook">И есть ли на тебе какое-либо воздействие?</p>
+        <p class="lead">Определи, где сейчас находится главный энергетический дисбаланс и есть ли признаки, которые стоит проверить глубже.</p>
+        <p class="quote">Иногда мы пытаемся исправить деньги, отношения, состояние или проявленность, хотя причина находится глубже — в энергетической системе.</p>
+        <div class="chakra-orbit" aria-hidden="true">
+          <span style="--c:#c83d48;--i:1"></span><span style="--c:#e97f36;--i:2"></span><span style="--c:#e7c74c;--i:3"></span><span style="--c:#58a86d;--i:4"></span><span style="--c:#5ca7c2;--i:5"></span><span style="--c:#6872c4;--i:6"></span><span style="--c:#a070c2;--i:7"></span>
+        </div>
+        <div class="actions"><button class="primary" id="startBtn">Пройти тест</button></div>
+        <p class="fine intro-note">33 коротких вопроса · ответы «да» или «нет» · без регистрации</p>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen">
+      <div class="progress-wrap">
+        <div class="progress-top"><span id="sectionLabel">Энергетические центры</span><span id="progressText">1 из 33</span></div>
+        <div class="progress"><span id="progressBar"></span></div>
+      </div>
+      <div class="card question-card">
+        <div class="chakra-head">
+          <span class="chakra-dot"></span>
+          <div><div class="chakra-name" id="chakraName"></div><div class="chakra-theme" id="chakraTheme"></div></div>
+        </div>
+        <div class="question" id="questionText"></div>
+        <div class="answer-row">
+          <button class="answer" data-answer="1">Да</button>
+          <button class="answer" data-answer="0">Нет</button>
+        </div>
+        <button class="back" id="backBtn">← Назад</button>
+      </div>
+    </section>
+
+    <section id="transition" class="screen">
+      <div class="card">
+        <p class="eyebrow">Важный момент</p>
+        <h2>А теперь проверим <span class="gold">маркеры влияния</span></h2>
+        <p class="transition-copy">Не каждый энергетический дисбаланс связан с внешним воздействием. Иногда человек устал, находится в стрессе или проживает сложный жизненный период.</p>
+        <p class="transition-copy">Ответьте ещё на пять вопросов. Тест не ставит диагноз — он помогает увидеть признаки, которые стоит исследовать глубже.</p>
+        <div class="actions"><button class="primary" id="continueBtn">Продолжить</button></div>
+      </div>
+    </section>
+
+    <section id="results" class="screen">
+      <div class="result-stack">
+        <div class="card result-hero" id="mainResult"></div>
+        <div class="card" id="relatedResult"></div>
+        <div class="card impact" id="impactResult"></div>
+        <div class="card">
+          <p class="eyebrow">Следующий шаг</p>
+          <h2>Хотите, я посмотрю ваш случай <span class="gold">глубже?</span></h2>
+          <p class="result-copy">В пространстве «Целитель нового времени» мы говорим об энергетической системе человека, воздействиях, целительстве и восстановлении поля.</p>
+          <p class="result-copy"><strong>Каждое воскресенье я провожу живые разборы.</strong> Несколько историй выбираю по отклику и прямо в эфире смотрю, что происходит в поле человека и куда стоит обратить внимание.</p>
+          <div class="telegram-template" id="sharePreview"></div>
+          <div class="actions two">
+            <button class="secondary" id="copyBtn">Скопировать результат</button>
+            <a class="primary" href="https://t.me/+Y2CZd5WP7Yc4M2My" target="_blank" rel="noopener">Хочу на воскресный разбор</a>
+          </div>
+          <p class="fine">Сохраните результат или скопируйте его. В пространстве добавьте несколько предложений о том, что сейчас происходит в вашей жизни.</p>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Личный формат</p>
+          <h3>Индивидуальная энергетическая диагностика<span class="price">3 000 ₽</span></h3>
+          <p class="result-copy">Если хочется получить ответ лично и не ждать воскресного разбора, на диагностике я посмотрю состояние энергетической системы, основные нарушения, привязки, подключения и возможные внешние влияния.</p>
+          <div class="actions"><a class="secondary" href="https://t.me/+Y2CZd5WP7Yc4M2My" target="_blank" rel="noopener" id="diagnosticBtn">Записаться на диагностику — 3 000 ₽</a></div>
+        </div>
+        <div class="actions"><button class="secondary" id="restartBtn">Пройти тест заново</button></div>
+      </div>
+    </section>
+
+    <footer>Тест относится к практикам самонаблюдения и энергетической работы и не заменяет медицинскую или психологическую диагностику.</footer>
+  </main>
+  <div class="toast" id="toast" role="status">Результат скопирован</div>
+
+  <script>
+    const chakras = [
+      { n: 1, name: 'Муладхара', theme: 'Опора · безопасность · материальная стабильность', color: '#c83d48',
+        qs: ['Бывает ли у вас тревога или внутреннее ощущение опасности, хотя объективной причины сейчас нет?', 'Есть ли постоянный страх потерять деньги, работу, дом, стабильность или привычную опору?', 'Чувствуете ли вы, что тело всё время находится в напряжении и вам сложно по-настоящему расслабиться?', 'Есть ли ощущение: «Если я перестану всё контролировать — всё рухнет»?'],
+        areas: ['страх за будущее и стабильность', 'постоянная готовность «выживать»', 'сильная потребность всё контролировать'], deep: 'энергетические программы, связанные с материальной сферой, безопасностью и родовыми историями' },
+      { n: 2, name: 'Свадхистана', theme: 'Эмоции · близость · удовольствие · желания', color: '#e97f36',
+        qs: ['Есть ли у вас сильные эмоциональные качели — либо, наоборот, состояние «я вообще ничего не чувствую»?', 'Есть ли человек, о котором вы постоянно думаете и которого не можете эмоционально отпустить?', 'Чувствуете ли вы опустошение после определённых людей, общения или сексуальной близости?', 'Есть ли стыд или вина за собственные желания, удовольствие, сексуальность?'],
+        areas: ['подавленные желания и запрет на удовольствие', 'эмоциональные зависимости и привязанности', 'утечки энергии через отношения'], deep: 'энергетические привязки и влияние другого человека на эмоциональное поле' },
+      { n: 3, name: 'Манипура', theme: 'Воля · действия · сила · личные границы', color: '#e7c74c',
+        qs: ['Трудно ли вам принимать решения и доводить начатое до результата?', 'Включается ли перед важным шагом внутренний стоп: «Опасно», «я не могу», «не имею права», «ещё не время»?', 'Есть ли сильный внутренний критик, чувство вины или стыда за себя?', 'Чувствуете ли вы после конфликтов, защиты границ или общения с некоторыми людьми состояние: «Меня как будто обесточили»?'],
+        areas: ['уверенность, действие и право выбирать', 'способность говорить «нет»', 'реализация, деньги и движение вперёд'], deep: 'энергетические пробои и программы, влияющие на волю и реализацию' },
+      { n: 4, name: 'Анахата', theme: 'Сердце · любовь · доверие · принятие', color: '#58a86d',
+        qs: ['Есть ли тяжесть или зажим в груди, особенно когда речь идёт о близости и отношениях?', 'Повторяется ли у вас похожий болезненный сценарий в отношениях?', 'Трудно ли вам принимать помощь, заботу, подарки и любовь от других людей?', 'Есть ли старые обиды, которые вы понимаете головой, но эмоционально до сих пор не можете отпустить?'],
+        areas: ['непрожитая боль и страх близости', 'сложность принимать любовь и поддержку', 'сильные эмоциональные связи с прошлым'], deep: 'существующие энергетические связи, старые контракты и привязки' },
+      { n: 5, name: 'Вишудха', theme: 'Голос · самовыражение · проявленность', color: '#5ca7c2',
+        qs: ['Появляется ли ком или зажим в горле, особенно когда нужно сказать что-то важное?', 'Сложно ли вам рассказывать о себе, показывать свою работу, продавать или озвучивать цену?', 'Бывает ли, что вы долго молчите и «проглатываете» слова, а потом резко срываетесь?', 'Есть ли сильный страх осуждения: «Что обо мне подумают»?'],
+        areas: ['запрет говорить и страх быть увиденным', 'подавление собственной правды', 'сложность проявлять себя через голос и действие'], deep: 'программы молчания и блокировки самовыражения' },
+      { n: 6, name: 'Аджна', theme: 'Ясность · видение · интуиция', color: '#6872c4',
+        qs: ['Есть ли ощущение постоянной «каши» в голове и расфокуса?', 'Трудно ли вам принимать решения из-за постоянных сомнений и прокручивания вариантов?', 'Чувствуете ли вы давление в затылочной части головы? Возможно, затылок начинает болеть без причины или болит постоянно, хотя раньше такого не было?', 'Есть ли ощущение, что раньше вы лучше чувствовали людей и ситуации, а сейчас интуиция словно отключилась?'],
+        areas: ['информационный перегруз и сомнения', 'недоверие себе и потеря ясности', 'сложности с интуитивным восприятием'], deep: 'ментальное поле и энергетические подключения' },
+      { n: 7, name: 'Сахасрара', theme: 'Смысл · связь с Богом · внутреннее руководство', color: '#a070c2',
+        qs: ['Возникает ли ощущение: «Я не понимаю, зачем всё это и куда я иду»?', 'Есть ли чувство внутренней пустоты или оторванности от себя?', 'Чувствуете ли вы усталость не столько телом, сколько словно «на уровне души»?', 'Есть ли ощущение, что внутреннее руководство, которое раньше помогало вам, исчезло?'],
+        areas: ['потеря старых смыслов и духовный кризис', 'разрыв со своим внутренним ориентиром', 'перестройка системы ценностей'], deep: 'качество подключений и состояние высших энергетических каналов' }
+    ];
+    const impactQuestions = [
+      'Началось ли это состояние довольно резко, хотя раньше его практически не было?',
+      'Можете ли вы вспомнить человека, событие, конфликт, отношения или период, после которого ваше состояние заметно изменилось?',
+      'Продолжается ли это состояние несколько недель или дольше, несмотря на отдых?',
+      'Усиливается ли оно после общения с конкретными людьми, посещения определённых мест, переписок или даже воспоминаний о человеке?',
+      'Бывает ли ощущение: «Это состояние как будто вообще не моё»?'
+    ];
+    const flatQuestions = chakras.flatMap((c, ci) => c.qs.map((text, qi) => ({ text, ci, qi, impact: false }))).concat(impactQuestions.map((text, qi) => ({ text, qi, impact: true })));
+    const screens = [...document.querySelectorAll('.screen')];
+    const els = Object.fromEntries(['start','quiz','transition','results','startBtn','continueBtn','backBtn','questionText','chakraName','chakraTheme','progressText','progressBar','sectionLabel','mainResult','relatedResult','impactResult','sharePreview','copyBtn','restartBtn','toast','diagnosticBtn'].map(id => [id, document.getElementById(id)]));
+    let answers = Array(33).fill(null);
+    let index = 0;
+
+    function show(id) { screens.forEach(s => s.classList.toggle('active', s.id === id)); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function save() { localStorage.setItem('chakraEnergyTest', JSON.stringify({ answers, index })); }
+    function restore() {
+      try { const saved = JSON.parse(localStorage.getItem('chakraEnergyTest')); if (saved && Array.isArray(saved.answers) && saved.answers.length === 33) { answers = saved.answers; index = Math.max(0, Math.min(saved.index || 0, 32)); return answers.some(v => v !== null); } } catch (_) {} return false;
+    }
+    function renderQuestion() {
+      const q = flatQuestions[index];
+      const c = q.impact ? { name: 'Маркеры возможного влияния', theme: 'Самонаблюдение · 5 вопросов', color: '#d6b36c' } : chakras[q.ci];
+      document.documentElement.style.setProperty('--accent', c.color);
+      els.chakraName.textContent = q.impact ? c.name : `${c.n} чакра · ${c.name}`;
+      els.chakraTheme.textContent = c.theme;
+      els.questionText.textContent = q.text;
+      els.progressText.textContent = `${index + 1} из 33`;
+      els.progressBar.style.width = `${((index + 1) / 33) * 100}%`;
+      els.sectionLabel.textContent = q.impact ? 'Маркеры влияния' : 'Энергетические центры';
+      els.backBtn.disabled = index === 0;
+      show('quiz');
+    }
+    function answer(value) {
+      answers[index] = Number(value);
+      save();
+      if (index === 27) { index = 28; save(); show('transition'); return; }
+      if (index === 32) { renderResults(); return; }
+      index += 1; save(); renderQuestion();
+    }
+    function status(score) {
+      if (score <= 1) return 'Выраженного дисбаланса тест не показывает.';
+      if (score === 2) return 'Есть отдельные сигналы. Эту сферу стоит наблюдать.';
+      if (score === 3) return 'Тест показывает выраженный энергетический дисбаланс.';
+      return 'Одна из приоритетных зон для более глубокого исследования.';
+    }
+    function renderResults() {
+      const scores = chakras.map((_, ci) => answers.slice(ci * 4, ci * 4 + 4).filter(v => v === 1).length);
+      const max = Math.max(...scores);
+      const mainIndex = scores.indexOf(max);
+      const main = chakras[mainIndex];
+      const related = chakras.filter((_, ci) => ci !== mainIndex && scores[ci] >= 3);
+      const impactScore = answers.slice(28).filter(v => v === 1).length;
+      document.documentElement.style.setProperty('--accent', main.color);
+      els.mainResult.innerHTML = `<p class="eyebrow">Ваш персональный результат</p><h2>Главный энергетический центр</h2><div class="result-chakra"><div class="result-number">${main.n}</div><div><div class="result-title">${main.name}</div><div class="result-sub">${main.theme}</div></div></div><p class="result-copy"><strong>${scores[mainIndex]} из 4 ответов «да».</strong> ${status(scores[mainIndex])}</p><ul class="bullet-list">${main.areas.map(a => `<li>${a}</li>`).join('')}</ul><p class="result-copy">${impactScore >= 3 ? `С учётом дополнительных маркеров стоит глубже проверить ${main.deep}.` : `В этой зоне сейчас может находиться основная потеря или застой энергии.`}</p>`;
+      els.relatedResult.innerHTML = related.length
+        ? `<p class="eyebrow">Связанные центры</p><h3>Дополнительно тест показывает напряжение</h3><div class="related">${related.map(c => `<span class="chip">${c.n} · ${c.name}</span>`).join('')}</div><p class="result-copy">Такая связка может отражаться сразу в нескольких сферах жизни. Чтобы понять её причину, важно смотреть не только отдельные центры, но и поле целиком.</p>`
+        : `<p class="eyebrow">Общая картина</p><h3>Других выраженных зон тест не показывает</h3><p class="result-copy">Сейчас внимание сосредоточено прежде всего на центре ${main.name}. Остальные центры набрали меньше трёх ответов «да».</p>`;
+      const impactData = impactScore <= 1
+        ? { cls: 'safe', title: 'Выраженных признаков внешнего воздействия тест не показывает', copy: 'Вероятнее, состояние связано с внутренними процессами, нагрузкой или накопленным напряжением.' }
+        : impactScore === 2
+        ? { cls: '', title: 'Есть отдельные маркеры', copy: 'Пока нельзя говорить о внешнем воздействии, но эту тему стоит наблюдать.' }
+        : { cls: '', title: 'Есть маркеры, которые стоит проверить глубже', copy: 'Ваши ответы показывают несколько признаков, которые могут сопровождать внешнее энергетическое влияние. Сам тест не определяет его наличие. Чтобы понять, является ли это воздействием или внутренним процессом, нужна более глубокая диагностика поля.' };
+      els.impactResult.classList.toggle('safe', Boolean(impactData.cls));
+      els.impactResult.innerHTML = `<p class="eyebrow">${impactScore} из 5 маркеров</p><h3>${impactData.title}</h3><p class="result-copy">${impactData.copy}</p>`;
+      const relatedNames = related.length ? related.map(c => `${c.n} — ${c.name}`).join(', ') : 'выраженных дополнительных центров нет';
+      const share = `Я прошла тест «Куда уходит твоя энергия?»\n\nГлавный энергетический центр: ${main.n} — ${main.name}\nДополнительные центры: ${relatedNames}\nМаркеры возможного внешнего влияния: ${impactScore} из 5.\n\nХочу попасть на воскресный разбор.`;
+      els.sharePreview.textContent = share;
+      els.copyBtn.dataset.share = share;
+      localStorage.removeItem('chakraEnergyTest');
+      show('results');
+    }
+    async function copyText(text) {
+      try { await navigator.clipboard.writeText(text); }
+      catch (_) { const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+      els.toast.classList.add('show'); setTimeout(() => els.toast.classList.remove('show'), 2200);
+    }
+    els.startBtn.addEventListener('click', () => { if (!restore()) { answers = Array(33).fill(null); index = 0; } renderQuestion(); });
+    els.continueBtn.addEventListener('click', renderQuestion);
+    els.backBtn.addEventListener('click', () => { if (index > 0) { index -= 1; save(); renderQuestion(); } });
+    document.querySelectorAll('.answer').forEach(btn => btn.addEventListener('click', () => answer(btn.dataset.answer)));
+    els.copyBtn.addEventListener('click', () => copyText(els.copyBtn.dataset.share));
+    els.diagnosticBtn.addEventListener('click', () => copyText('Здравствуйте! Хочу записаться на индивидуальную энергетическую диагностику за 3 000 ₽.'));
+    els.restartBtn.addEventListener('click', () => { answers = Array(33).fill(null); index = 0; localStorage.removeItem('chakraEnergyTest'); show('start'); });
+  </script>
+</body>
+</html>
