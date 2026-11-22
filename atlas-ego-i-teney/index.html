@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#221a1d">
+  <title>Атлас Эго и Теней · Лилия Маслова</title>
+  <link rel="stylesheet" href="atlas.css">
+  <script type="module" src="atlas.js"></script>
+</head>
+<body>
+  <a class="skip" href="#catalogue">К каталогу</a>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <span class="signature"><span class="seal" aria-hidden="true">ЛМ</span> Лилия Маслова</span>
+      <span class="masthead-note">Учебный атлас</span>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="cover" aria-labelledby="atlas-title">
+      <div class="cover-copy">
+        <h1 id="atlas-title">Атлас Эго и <em>Теней</em></h1>
+        <p>Каталог проявлений для изучения и практики.</p>
+      </div>
+      <div class="cover-stats" aria-label="Доступные материалы атласа">
+        <div><strong id="group-count">—</strong><span>групп</span></div>
+        <div><strong id="entry-count">—</strong><span>проявлений</span></div>
+      </div>
+    </section>
+
+    <section class="study-entry" aria-labelledby="study-title">
+      <h2 id="study-title"><a href="materials/">Конспект и лекции</a></h2>
+      <p>Тени и субличности, глубинные слои Эго, мир-зеркало и возвращение целостности. Схемы, практики и материалы к занятию.</p>
+    </section>
+
+    <div class="workspace">
+      <nav class="groups" aria-labelledby="groups-title">
+        <h2 id="groups-title">Группы</h2>
+        <div id="group-nav" class="group-nav"></div>
+      </nav>
+
+      <section class="catalogue" id="catalogue" aria-labelledby="catalogue-title">
+        <div class="filters">
+          <div class="search-field">
+            <label for="search">Поиск по атласу</label>
+            <div class="search-control">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="search" type="search" autocomplete="off" placeholder="Название или фраза из карточки">
+            </div>
+          </div>
+          <div class="view-field">
+            <label for="view">Показывать</label>
+            <select id="view">
+              <option value="all">Все карточки</option>
+              <option value="saved">Избранное</option>
+            </select>
+          </div>
+        </div>
+        <div class="catalogue-heading">
+          <h2 id="catalogue-title">Все проявления</h2>
+          <p id="results-count" role="status" aria-live="polite"></p>
+        </div>
+        <p id="group-note" class="group-note" hidden></p>
+        <div id="cards" class="cards"></div>
+        <div id="empty" class="empty" hidden>
+          <p id="empty-text"></p>
+          <button id="reset" class="text-button" type="button">Сбросить фильтры</button>
+        </div>
+        <aside id="source-note" class="source-note"></aside>
+        <noscript><p>Для поиска, фильтров и просмотра карточек включите JavaScript в браузере.</p></noscript>
+      </section>
+    </div>
+  </main>
+  <footer class="shell">Лилия Маслова | Проводник смыслов</footer>
+
+  <dialog id="reader" aria-labelledby="card-title">
+    <div class="reader-bar">
+      <button id="close-reader" class="text-button" type="button" autofocus>К каталогу</button>
+      <div class="reader-actions">
+        <button id="large-text" class="quiet-button" type="button" aria-pressed="false" title="Крупный текст"><span class="text-size" aria-hidden="true">Аа</span><span class="visually-hidden">Крупный текст</span></button>
+        <button id="save-card" class="quiet-button" type="button" aria-pressed="false"><span aria-hidden="true">☆</span> <span id="save-label">В избранное</span></button>
+      </div>
+    </div>
+    <article class="reader-body">
+      <p id="card-group" class="card-group"></p>
+      <h2 id="card-title"></h2>
+      <button id="study-link" class="text-button study-link" type="button" hidden></button>
+      <div id="card-sections"></div>
+      <p id="card-source" class="card-source"></p>
+      <div id="card-study" class="card-study" hidden></div>
+    </article>
+    <div id="reader-nav" class="reader-nav" hidden>
+      <button id="previous" class="text-button" type="button">Предыдущая</button>
+      <span id="card-position" aria-live="polite"></span>
+      <button id="next" class="text-button" type="button">Следующая</button>
+    </div>
+  </dialog>
+</body>
+</html>
