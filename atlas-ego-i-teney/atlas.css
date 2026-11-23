@@ -223,3 +223,54 @@ dialog::backdrop { background: #1c111ab3; }
 .study-materials table { width: 100%; border-collapse: collapse; }
 .study-materials th, .study-materials td { border-bottom: 1px solid var(--line); padding: .55rem .4rem; text-align: left; vertical-align: top; }
 @media (max-width: 38rem) { .study-materials nav ul { columns: 1; } }
+
+/* Atlas homepage */
+.atlas-home { background: radial-gradient(ellipse at top right, #e9dcf3, transparent 55rem), #f8f4f2; }
+.atlas-home .masthead { background: #21132d; border-color: #443052; }
+.atlas-home .masthead-inner { min-height: 4.65rem; flex-wrap: wrap; padding-block: .65rem; }
+.masthead-nav { display: flex; gap: .35rem clamp(.65rem, 2.5vw, 1.6rem); flex-wrap: wrap; }
+.masthead-nav a { color: #f2dff1; text-decoration: none; padding: .45rem .2rem; font-size: .9rem; }
+.masthead-nav a:hover { color: #ffe3a9; text-decoration: underline; }
+.atlas-home .cover { min-height: 25rem; border-color: #624266; background: radial-gradient(ellipse at 88% 50%, #60477b, transparent 52%), linear-gradient(125deg, #281532, #181b37); box-shadow: 0 1rem 2.5rem #3020392b; align-items: center; padding: clamp(1.75rem, 5vw, 4.3rem); }
+.atlas-home .cover::before { display: none; }
+.cover-copy { position: relative; z-index: 1; }
+.cover-copy .cover-label { margin: 0 0 1.45rem; color: #f6cf98; font-weight: 650; font-size: .88rem; }
+.cover-copy .cover-intro { margin-top: 1.3rem; max-width: 41ch; color: #eee0ed; }
+.cover-actions { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.atlas-action { display: inline-flex; align-items: center; padding: .7rem 1rem; min-height: 2.8rem; border-radius: .5rem; border: 1px solid #b9a0c7; background: #faf5ff; color: #432855; text-decoration: none; font-weight: 650; }
+.atlas-action:hover { filter: brightness(1.08); text-decoration: underline; text-underline-offset: .18em; }
+.atlas-action.primary { color: #341d39; background: #f7d99f; border-color: #f7d99f; }
+.atlas-action.secondary { color: #f6e7fa; background: #ffffff12; border-color: #f4d6ee75; }
+.cover-art { position: absolute; inset: 7% 3% 7% auto; width: 43%; display: grid; place-items: center; pointer-events: none; }
+.cover-art i { position: absolute; width: 78%; aspect-ratio: 1; border: 1px solid #e9c9a47d; border-radius: 50%; box-shadow: 0 0 2rem #cf96ff26, inset 0 0 2rem #cf96ff26; }
+.cover-art i:nth-child(2) { width: 58%; border-style: dashed; }
+.cover-art i:nth-child(3) { width: 42%; transform: rotate(45deg); border-radius: 28%; }
+.cover-art span { font-size: clamp(4rem, 10vw, 9rem); color: #ffe0a6; text-shadow: 0 0 2rem #dc99ffad; }
+.learning { scroll-margin-top: 1.5rem; margin-block: 3rem; }
+.learning-head { display: flex; align-items: baseline; gap: .6rem 1.3rem; flex-wrap: wrap; justify-content: space-between; margin-bottom: 1.2rem; }
+.learning-head h2, .catalogue-intro h2 { font: 400 clamp(2rem, 5vw, 3.05rem)/1.12 var(--serif); color: #332046; }
+.learning-head a { color: #5e3773; text-underline-offset: .22em; }
+.lesson-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .9rem; }
+.lesson-grid a { display: grid; align-content: start; gap: .65rem; min-height: 9rem; padding: 1.3rem; background: #fffbff; border: 1px solid #dfcce7; border-top: 3px solid #9564b1; border-radius: .7rem; text-decoration: none; color: #4c315f; box-shadow: 0 .4rem 1.25rem #46275514; }
+.lesson-grid a:nth-child(3n+2) { border-top-color: #678f98; }
+.lesson-grid a:nth-child(3n) { border-top-color: #b18a50; }
+.lesson-grid a:hover { border-color: #8f5aa5; background: #faf1ff; }
+.lesson-grid strong, .learning-practice h3 { font: 400 1.4rem/1.2 var(--serif); }
+.lesson-grid span { color: #66586d; }
+.learning-practice { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1rem; padding: 1.2rem 1.4rem; color: #ffe6b6; background: linear-gradient(120deg,#382048,#293450); border-radius: .7rem; }
+.learning-practice p { margin-top: .4rem; color: #f1e4f2; }
+.catalogue-intro { margin-bottom: 1.2rem; scroll-margin-top: 1.5rem; }
+.catalogue-intro p { color: #65536b; margin-top: .55rem; }
+.atlas-home .workspace { background: #fffafe; border: 1px solid #e0d2e4; border-radius: .85rem; padding: clamp(1rem, 3.2vw, 2rem); }
+.atlas-home .catalogue-card { background: #fbf5ff; border-color: #e3d5eb; }
+.atlas-home .catalogue-card:hover { border-color: #a77cbd; }
+.atlas-home .group-button[aria-pressed="true"] { color: #4a2961; background: #f0e2f8; border-color: #e1c9ed; }
+.study-materials > header { margin-bottom: 1.25rem; padding: clamp(1.25rem, 4vw, 2.4rem); border-radius: .9rem; color: #fff3e3; background: linear-gradient(122deg, #342241, #2d3455); }
+.study-materials > header a { color: #ffe0a4; }
+.study-materials > nav { background: #fffbff; border: 1px solid #e0d2e4; border-radius: .75rem; padding: 1rem; }
+.study-materials article h2 { color: #432b55; }
+@media (max-width: 850px) { .lesson-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .atlas-home .cover { min-height: 20rem; } .cover-art { opacity: .28; inset: 4% 2% auto auto; width: 55%; height: 88%; } }
+@media (max-width: 490px) { .lesson-grid { grid-template-columns: 1fr; } .lesson-grid a { min-height: 0; } .atlas-home .cover { min-height: 0; } }
+
+.study-materials .clearing-card { max-width: 420px; scroll-margin-top: 1.5rem; }

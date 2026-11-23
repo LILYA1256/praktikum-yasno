@@ -9,38 +9,46 @@
   <link rel="stylesheet" href="atlas.css">
   <script type="module" src="atlas.js"></script>
 </head>
-<body>
+<body class="atlas-home">
   <a class="skip" href="#catalogue">К каталогу</a>
   <header class="masthead">
     <div class="shell masthead-inner">
       <span class="signature"><span class="seal" aria-hidden="true">ЛМ</span> Лилия Маслова</span>
-      <span class="masthead-note">Учебный атлас</span>
+      <nav class="masthead-nav" aria-label="Разделы Атласа"><a href="#lessons">Лекции</a><a href="#catalogue">Каталог теней</a><a href="materials/#тени-в-работе-проводника">Практика</a></nav>
     </div>
   </header>
   <main class="shell">
     <section class="cover" aria-labelledby="atlas-title">
       <div class="cover-copy">
+        <p class="cover-label">Хроники Акаши · Код доступа</p>
         <h1 id="atlas-title">Атлас Эго и <em>Теней</em></h1>
-        <p>Каталог проявлений для изучения и практики.</p>
+        <p class="cover-intro">Что такое тень, как устроены слои Эго и какие части себя мы видим через мир-зеркало. Здесь собраны лекции, схемы и практики для самостоятельной работы и работы проводника.</p>
+        <div class="cover-actions"><a class="atlas-action primary" href="#lessons">Начать с лекций</a><a class="atlas-action secondary" href="#catalogue">Открыть каталог</a></div>
       </div>
-      <div class="cover-stats" aria-label="Доступные материалы атласа">
-        <div><strong id="group-count">—</strong><span>групп</span></div>
-        <div><strong id="entry-count">—</strong><span>проявлений</span></div>
-      </div>
+      <div class="cover-art" aria-hidden="true"><i></i><i></i><i></i><span>✦</span></div>
     </section>
 
-    <section class="study-entry" aria-labelledby="study-title">
-      <h2 id="study-title"><a href="materials/">Конспект и лекции</a></h2>
-      <p>Тени и субличности, глубинные слои Эго, мир-зеркало и возвращение целостности. Схемы, практики и материалы к занятию.</p>
+    <section class="learning" id="lessons" aria-labelledby="study-title">
+      <div class="learning-head"><h2 id="study-title">Лекции и практики</h2><a href="materials/#конспект-занятия">Конспект занятия</a></div>
+      <div class="lesson-grid">
+        <a href="materials/#лекция-1.-тень-и-её-сила"><strong>Тень и её сила</strong><span>Как мы отказываемся от части себя и где потом её узнаём.</span></a>
+        <a href="materials/#лекция-2.-субличности-и-внутренний-диалог"><strong>Субличности и внутренний диалог</strong><span>Пять шагов для встречи с внутренней частью.</span></a>
+        <a href="materials/#лекция-3.-глубинная-тень-и-слои-эго"><strong>Структура Эго и глубинная тень</strong><span>Воронка воплощения, слои Эго и подтени.</span></a>
+        <a href="materials/#лекция-4.-мембрана-разделения-мир-зеркало"><strong>Мир-зеркало</strong><span>Мембрана разделения и три состояния целостности.</span></a>
+        <a href="materials/#лекция-5.-исцеление-и-путь-проводника"><strong>Исцеление и путь проводника</strong><span>Принятие отделённых частей и личная работа проводника.</span></a>
+        <a href="materials/#лекция-6.-архетипы-и-тени"><strong>Архетипы и тени</strong><span>Как роли и проекции помогают заметить скрытые стороны.</span></a>
+      <a href="materials/#mir-zerkalo-i-vnutrenniy-soyuz"><strong>Мир-зеркало, тени и внутренний союз</strong><span>Внешний триггер, Инь и Ян и практика принятия тени.</span></a><a href="materials/#kliring"><strong>Открытка с клирингом</strong><span>Практика алхимизации в свет.</span></a></div>
+      <div class="learning-practice"><div><h3>Тени в работе проводника</h3><p>Таблица фигур, внутренних установок и ресурсов. Практика «Я признаю все части себя».</p></div><a class="atlas-action" href="materials/#тени-в-работе-проводника">Открыть практику</a></div>
     </section>
 
+    <div class="catalogue-intro" id="catalogue"><h2>Каталог теней</h2><p>Найдите знакомое проявление и посмотрите, что может за ним стоять и какую силу можно вернуть.</p></div>
     <div class="workspace">
       <nav class="groups" aria-labelledby="groups-title">
-        <h2 id="groups-title">Группы</h2>
+        <h2 id="groups-title">По темам</h2>
         <div id="group-nav" class="group-nav"></div>
       </nav>
 
-      <section class="catalogue" id="catalogue" aria-labelledby="catalogue-title">
+      <section class="catalogue" aria-labelledby="catalogue-title">
         <div class="filters">
           <div class="search-field">
             <label for="search">Поиск по атласу</label>
@@ -59,7 +67,7 @@
         </div>
         <div class="catalogue-heading">
           <h2 id="catalogue-title">Все проявления</h2>
-          <p id="results-count" role="status" aria-live="polite"></p>
+          <p id="results-count" class="visually-hidden" role="status" aria-live="polite"></p>
         </div>
         <p id="group-note" class="group-note" hidden></p>
         <div id="cards" class="cards"></div>
@@ -67,7 +75,6 @@
           <p id="empty-text"></p>
           <button id="reset" class="text-button" type="button">Сбросить фильтры</button>
         </div>
-        <aside id="source-note" class="source-note"></aside>
         <noscript><p>Для поиска, фильтров и просмотра карточек включите JavaScript в браузере.</p></noscript>
       </section>
     </div>
@@ -92,7 +99,6 @@
     </article>
     <div id="reader-nav" class="reader-nav" hidden>
       <button id="previous" class="text-button" type="button">Предыдущая</button>
-      <span id="card-position" aria-live="polite"></span>
       <button id="next" class="text-button" type="button">Следующая</button>
     </div>
   </dialog>

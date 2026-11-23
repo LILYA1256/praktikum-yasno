@@ -1,6 +1,6 @@
 import { catalogue } from './catalogue.js';
 
-const { groups, entries, expectedGroups, expectedEntries } = catalogue;
+const { groups, entries } = catalogue;
 const groupById = new Map(groups.map(group => [group.id, group]));
 const entryById = new Map(entries.map(entry => [entry.id, entry]));
 const get = id => document.getElementById(id);
@@ -50,25 +50,11 @@ const index = new Map(entries.map(entry => {
   const fields = sections.flatMap(section => [section.title, section.text, ...(section.items ?? [])]);
   return [entry.id, normalize([entry.title, groupById.get(entry.groupId).title, study?.title, ...fields].join(' '))];
 }));
-const totals = new Map(groups.map(group => [group.id, entries.filter(entry => entry.groupId === group.id).length]));
-
-get('group-count').textContent = groups.length + ' из ' + expectedGroups;
-get('entry-count').textContent = entries.length + ' из ' + expectedEntries;
-if (groups.length < expectedGroups || entries.length < expectedEntries) {
-  const sourceNote = get('source-note');
-  sourceNote.append(
-    make('strong', '', 'Рабочая версия'),
-    make('p', '', 'По исходной структуре в атласе 12 групп по 10 проявлений, включая «Золотую тень».')
-  );
-} else {
-  get('source-note').hidden = true;
-}
-
-for (const group of [{ id: '', title: 'Все проявления' }, ...groups]) {
+for (const group of [{ id: '', title: 'Все проявления' }, ...groups.filter(group => entries.some(entry => entry.groupId === group.id))]) {
   const button = make('button', 'group-button');
   button.type = 'button';
   button.dataset.group = group.id;
-  button.append(make('span', '', group.title), make('span', 'group-total', String(totals.get(group.id) ?? entries.length)));
+  button.textContent = group.title;
   button.addEventListener('click', () => {
     selectedGroup = group.id;
     showCatalogue();
@@ -116,7 +102,6 @@ function showCatalogue() {
   cards.replaceChildren(...displayedEntries.map(buildCard));
   get('empty').hidden = displayedEntries.length > 0;
   get('empty-text').textContent =
-    group && totals.get(group.id) === 0 ? 'Карточки этой группы пока недоступны.' :
     view.value === 'saved' && saved.size === 0 ? 'Избранное пока пусто. Карточку можно сохранить в режиме чтения.' :
     'По выбранным фильтрам ничего не найдено.';
   get('reset').hidden = !(selectedGroup || terms.length || view.value !== 'all');
@@ -168,7 +153,6 @@ function showReader(entry) {
   get('reader-nav').hidden = position === -1 || displayedEntries.length < 2;
   get('previous').disabled = position <= 0;
   get('next').disabled = position >= displayedEntries.length - 1;
-  get('card-position').textContent = (position + 1) + ' из ' + displayedEntries.length;
   showSavedState();
   if (!reader.open) reader.showModal();
   reader.scrollTop = 0;
